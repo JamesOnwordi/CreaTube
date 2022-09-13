@@ -1,0 +1,31 @@
+sequelize model:create --name guns --attributes id:integer,name:string,stat:text,damage:text,video:text,skin,categoryId:integer,commentId:integer
+
+guns
+----
+id
+name
+stats(guns stats)
+damage(damagerange)
+video
+categoryId
+commentId
+skinsId
+
+skins
+-----
+id
+name
+video
+
+category
+--------
+id
+name
+
+comment
+-------
+id 
+text
+
+
+

@@ -1,0 +1,20 @@
+{
+  "name": "creatube",
+  "version": "1.0.0",
+  "description": "## Project Idea CreaTube is a platform where creators upload models of games charater, gun models ideas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JamesOnwordi/CreaTube.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JamesOnwordi/CreaTube/issues"
+  },
+  "homepage": "https://github.com/JamesOnwordi/CreaTube#readme"
+}
