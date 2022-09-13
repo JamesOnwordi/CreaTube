@@ -1,7 +1,7 @@
 # CreaTube
 
 ## Project Idea
-CreaTube is an online sharing platform where creators upload models of ideas of games charater and gun models
+CreaTube is an online sharing platform where creators upload models of games charater and gun models ideas
 
 ## API Used
 https://dash.valorant-api.com/
