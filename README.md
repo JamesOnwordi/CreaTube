@@ -30,7 +30,7 @@ https://dash.valorant-api.com/
 * A Page for displaying creators ideas
 * A comment section for a model
 * Have a gun and characters model
-* A users personal favorite model and updated model
+* A users created model and favorite model
 
 ## Stretch Goal
 * Characters Model
