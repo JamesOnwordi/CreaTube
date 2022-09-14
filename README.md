@@ -4,7 +4,7 @@
 CreaTube is a platform where creators upload models of games charater, gun models ideas
 ## User Stories
 
-* As a user, I want to create a list of models I made 
+* As a user, I want to make a new models(characters,guns,gears...)
 * As a user, I want to view other designers models
 * As a user, I want to be able to leave a comment on other models
 * As a user, I want to delete projects and update models I've made
