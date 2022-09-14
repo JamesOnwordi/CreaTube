@@ -20,7 +20,7 @@ https://dash.valorant-api.com/
 
 
 ## ER Diagram
-![Wireframe](ERDiagram.png)
+![Wireframe](ERD.png)
 
 ## Wireframe
 ![Wireframe](HomePage.png)
