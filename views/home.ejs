@@ -1,0 +1,76 @@
+
+     <nav class="navbar bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="https://cdn.dribbble.com/userupload/3158902/file/original-7c71bfa677e61dea61bc2acd59158d32.jpg?resize=400x0" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+            Bootstrap
+          </a>
+        </div>
+      </nav>
+    
+      <div class="container text-center">
+        <div class="row">
+          <div class="col">
+            Column
+          </div>
+          <div class="col">
+            <div class="container">
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <% let count = 1 %>
+                        <% guns.forEach(gun=>{%>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%=count%>" aria-label="Slide <%=count+1%>"></button>
+                            <% count ++ %>
+                        <% }) %> 
+                    </div>
+                    <div class="carousel-inner">
+                        <% count = 0 %>
+                        <div class="carousel-item active container">
+                            <div>
+                                <img src="<%=(guns[count].displayIcon)%>"   alt="...">
+                            </div>
+                            
+                        </div>
+                        <% guns.forEach(gun=>{%>
+                            <% if(count !== 0){ %> 
+                            <div class="carousel-item container">
+                                <div>
+                                    <img src="<%=(gun.displayIcon)%>"   alt="...">
+                                </div>
+                            </div>
+                            <%}%>
+                            <%count++%>
+                        <%}) %> 
+                     </div>
+                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                      </button>
+                      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                      </button>
+                    </div>
+              </div>
+          </div>
+          <div class="col">
+            Column
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <%for(let i = 0;i<guns.length;i++){%>
+            <% if(i%3 == 0){ %> 
+            <div class="container text-center">
+                <div class="row">
+                <% } %> 
+              <div class="col">
+                <img src="<%=guns[i].displayIcon%>"   alt="...">
+              </div>
+              <% if(i%3 == 2){ %> 
+              </div>
+            </div>
+            <% } %> 
+          <% } %> 
+      </div>

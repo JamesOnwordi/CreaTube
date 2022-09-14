@@ -16,5 +16,14 @@
   "bugs": {
     "url": "https://github.com/JamesOnwordi/CreaTube/issues"
   },
-  "homepage": "https://github.com/JamesOnwordi/CreaTube#readme"
+  "homepage": "https://github.com/JamesOnwordi/CreaTube#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "bootstrap": "^5.2.1",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "express-ejs-layouts": "^2.5.1",
+    "pg": "^8.8.0",
+    "sequelize": "^6.21.6"
+  }
 }

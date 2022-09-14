@@ -1,26 +1,39 @@
-sequelize model:create --name guns --attributes id:integer,name:string,stat:text,damage:text,video:text,skin,categoryId:integer,commentId:integer
+sequelize model:create --name gun --attributes uuid:string,name:string,pic:text,stat:json,userId:integer,commentId:integer
+sequelize model:create --name skin --attributes id:integer,name:text,video:string
+sequelize model:comment --name comment --attributes id:integer,comment:text
 
-guns
+fireRate:integer,magazineSize:integer,runSpeedMultiplier:integer,equipTimeSeconds:integer,reloadTimeSeconds:integer,headDamage:integer,bodyDamage:integer,legDamage:integer
+
+name: DataTypes.STRING,
+    pic: DataTypes.TEXT,
+    stats: DataTypes.JSON,
+    uuid: DataTypes.STRING,
+    userId: DataTypes.INTEGER,
+    commentId: DataTypes.INTEGER
+
+gun
 ----
 id
 name
-stats(guns stats)
-damage(damagerange)
-video
-categoryId
-commentId
-skinsId
+pic
 
-skins
+skin
 -----
 id
 name
 video
 
-category
+stat
 --------
 id
-name
+fireRate
+magazineSize
+runSpeedMultiplier
+equipTimeSeconds
+reloadTimeSeconds
+headDamage
+bodyDamage
+legDamage
 
 comment
 -------
