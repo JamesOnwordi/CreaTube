@@ -10,6 +10,41 @@
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
+    <nav class="navbar bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="https://cdn.dribbble.com/userupload/3158902/file/original-7c71bfa677e61dea61bc2acd59158d32.jpg?resize=400x0" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+            Bootstrap
+          </a>
+          <ul>
+            <!-- if the user is logged in... -->
+            <!-- all data in the res.locals is usuable in the layout -->
+            <% if (user) { %>
+                <li>
+                    <a href="/users/">Home</a>
+                </li>
+                <li>
+                    <a href="/users/profile">Profile</a>
+                </li>
+
+                <li>
+                    <a href="/users">Projects</a>
+                </li>
+                <li>
+                    <a href="/users/logout">Logout</a>
+                </li>
+            <% } else { %>
+                <li>
+                    <a href="/users/new">Sign Up</a>
+                </li>
+    
+                <li>
+                    <a href="/users/login">Login</a>
+                </li>
+            <% } %> 
+        </ul>
+        </div>
+      </nav>
     <%-body%> 
 </body>
 </html>

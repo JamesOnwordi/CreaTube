@@ -1,0 +1,35 @@
+<h2>Update Gun Model</h2>
+<form action="/update" method="post">
+    <div>
+        <p>
+            <label for="uuid">uuid:</label>
+        </p>
+        <input type="text" name="uuid" id="uuid" placeholder="<%//=gun.uuid%>" >       
+    </div>
+    <div> 
+        <p>
+            <label for="name">displayName:</label>
+        </p>
+        <input type="text" name="name" id="name" placeholder="<%//=gun.name%>"> 
+    </div>
+    <div>
+        <p>
+            <label for="stats">Stats:</label>
+        </p>
+        <input type="text" name="stats" id="stats" placeholder="<%//=gun.stats%>">
+    </div>
+    <div>
+        <p>
+            <label for="video">Video-Link:</label>
+        </p>
+        <input type="text" name="video" id="video" placeholder="<%//=gun.video%>">
+    </div>
+    <div>
+        <p>
+            <label for="userId">userId:</label>
+        </p>
+        <input type="text" name="userId" id="userId" >
+    </div>
+    <p></p>
+    <button>Submit</button>
+</form>
