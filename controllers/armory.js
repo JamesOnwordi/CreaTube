@@ -2,45 +2,36 @@ const express = require("express")
 const router = express.Router()
 const db = require("../models")
 const axios = require("axios")
+const methodOveride = require("method-override")
+router.use(methodOveride("_method"))
+
+
 router.use(express.urlencoded({extended:false}))
+router.use("/favorite",require("./favorite"))
 
 
-router.get("/",async(req,res)=>{
-    const favorites= await db.favorite.findAll()
-    console.log(favorites[2].name)
-    res.render("armory/favorite",{favorites})
-    // res.send(favorites)
-})
-
+// GET Route to display a weapon
 router.get("/:id",(req,res)=>{
-
-    try{
-    const url = `https://valorant-api.com/v1/weapons/${req.params.id}`
-        
-    axios.get(url)
-    .then(response=>{
-        res.render("armory/show",{armory:response.data.data})
-        // res.send(response.data.data)
-    })
-    }catch(err){
-        console.log("here")
-    }
-    // console.log('the currently logged in user is:', res.locals.user)
-})
-
-router.post("/:id", (req,res)=>{
-    // added
-    
-    console.log(req.params.id)
-    // add new favorite to db
     try{
         const url = `https://valorant-api.com/v1/weapons/${req.params.id}`
-            
+        
+        axios.get(url)
+         .then(response=>{
+             res.render("armory/show",{armory:response.data.data})
+        })
+    }catch(err){
+        console.log(err)
+    }
+})
+
+//POST Route to add a weapon to favorite
+router.post("/:id", (req,res)=>{
+    try{
+         const url = `https://valorant-api.com/v1/weapons/${req.params.id}`
         axios.get(url)
         .then(async response=>{
              armory = response.data.data
-
-             const favorites =  await db.favorite.findOrCreate({
+            const favorites =  await db.favorite.findOrCreate({
                 where:{
                     name: armory.displayIcon,
                     uuid: armory.uuid,
@@ -49,13 +40,13 @@ router.post("/:id", (req,res)=>{
                 }     
             })
         })
-        res.redirect("/armory")
+        res.redirect("favorite")
         }catch(err){
-            console.log("here")
+            console.log(err)
         }
 })
 
-
+// 
 // // new model
 // router.get("/new",(req,res)=>{
 //     res.render("armory/new")

@@ -1,13 +1,25 @@
-<h2>Details</h2>
-        
-                <%=armory.displayName%>
-                <%=armory.skins[0].chromas.streamVideo%>
-                <%=armory.skins[1].chromas.streamVideo%>
-                <%=armory.skins[2].chromas.streamVideo%>
-                <%=armory.skins[3].chromas.streamVideo%>
-                <%=armory.skins[4].chromas.streamVideo%>
-                <%=armory.skins[5].chromas.streamVideo%>
-
-                <form action="<%=armory.uuid%>" method="post">
-                  <button>Add to favorite</button>
-                </form>
+  <ul>
+  <li>
+      <div>
+          <p> <%= armory.displayName %></p>
+          <p><%=armory.shopData.category%></p>
+          <p><%=armory.weaponStats.fireRate%></p>
+          <p><%=armory.weaponStats.magazineSize%></p>
+          <p><%=armory.weaponStats.runSpeedMultiplier%></p>
+          <p><%=armory.weaponStats.equipTimeSeconds%></p>
+          <p><%=armory.weaponStats.firstBulletAccuracy%></p>
+          <p><%=armory.weaponStats.shotgunPelletCount%></p>
+          <p><%=armory.weaponStats.wallPenetration%></p>
+          <p><%=armory.weaponStats.fireMode%></p>
+          <p>Head Damage:<%=armory.weaponStats.damageRanges[0].headDamage%></p>
+          <p>Body Damage:<%=armory.weaponStats.damageRanges[0].bodyDamage%></p>
+          <p>Leg Damage:<%=armory.weaponStats.damageRanges[0].legDamage%></p>
+      </div>
+      <div><img src="<%=armory.displayIcon%>">
+        <form action="<%=armory.uuid%>" method="post">
+          <button>Add to favorite</button>
+        </form>
+      </div>
+  </li>
+</ul>
+                

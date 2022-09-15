@@ -7,6 +7,7 @@ const axios =require("axios")
 
 
 router.use("/armory",require("./armory"))
+router.use("/favorite",require("./favorite"))
 
 // GET /users/new -- render a form to create a new user
 router.get('/new', (req, res) => {

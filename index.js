@@ -46,6 +46,7 @@ app.get("/",(req,res)=>{
 
 // Controllers
 app.use("/armory",require("./controllers/armory"))
+app.use("/favorite",require("./controllers/favorite"))
 app.use("/users",require("./controllers/users"))
 
 
