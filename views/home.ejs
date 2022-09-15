@@ -10,7 +10,7 @@
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                         <% let count = 1 %>
-                        <% guns.forEach(gun=>{%>
+                        <% armories.forEach(armory=>{%>
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%=count%>" aria-label="Slide <%=count+1%>"></button>
                             <% count ++ %>
                         <% }) %> 
@@ -19,15 +19,15 @@
                         <% count = 0 %>
                         <div class="carousel-item active container">
                             <div>
-                                <img src="<%=(guns[count].displayIcon)%>"   alt="...">
+                                <img src="<%=(armories[count].displayIcon)%>"   alt="...">
                             </div>
                             
                         </div>
-                        <% guns.forEach(gun=>{%>
+                        <% armories.forEach(armory=>{%>
                             <% if(count !== 0){ %> 
                             <div class="carousel-item container">
                                 <div>
-                                    <img src="<%=(gun.displayIcon)%>"   alt="...">
+                                    <img src="<%=(armory.displayIcon)%>"   alt="...">
                                 </div>
                             </div>
                             <%}%>
@@ -51,13 +51,13 @@
         </div>
       </div>
       <div class="container">
-        <%for(let i = 0;i<guns.length;i++){%>
+        <%for(let i = 0;i<armories.length;i++){%>
             <% if(i%3 == 0){ %> 
             <div class="container text-center">
                 <div class="row">
                 <% } %> 
               <div class="col">
-                <img src="<%=guns[i].displayIcon%>"   alt="...">
+                <img src="<%=armories[i].displayIcon%>"   alt="...">
               </div>
               <% if(i%3 == 2){ %> 
               </div>

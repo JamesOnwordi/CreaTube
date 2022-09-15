@@ -5,12 +5,12 @@ router.use(express.urlencoded({extended:false}))
 
 
 router.get("/",(req,res)=>{
-    res.render("projects/home")
+    res.render("armory/home")
 })
 
 // new model
 router.get("/new",(req,res)=>{
-    res.render("projects/new")
+    res.render("armory/new")
     
 })
 
@@ -18,12 +18,12 @@ router.post("/new",(req,res)=>{
     // added
     console.log(req.body)
     // add new model to db
-    res.redirect("/guns")
+    res.redirect("/armory")
 })
 
 
 router.get("/update",(req,res)=>{
-    res.render("projects/update")
+    res.render("armory/update")
     
 })
 

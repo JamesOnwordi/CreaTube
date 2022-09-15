@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt')
 const axios =require("axios")
 
 
-router.use("/guns",require("./guns"))
+router.use("/armory",require("./armory"))
 
 // GET /users/new -- render a form to create a new user
 router.get('/new', (req, res) => {
@@ -19,10 +19,9 @@ router.get("/",(req,res)=>{
     axios.get(url)
     .then(response=>{
         // console.log(response)
-        res.render("home",{guns:response.data.data})
-        res.send()
+        res.render("home",{armories:response.data.data})
     })
-    console.log('the currently logged in user is:', res.locals.user)
+    // console.log('the currently logged in user is:', res.locals.user)
 })
 
 // POST /users -- create a new user in the db

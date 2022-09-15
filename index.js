@@ -38,14 +38,14 @@ app.get("/",(req,res)=>{
     axios.get(url)
     .then(response=>{
         // console.log(response)
-        res.render("home",{guns:response.data.data})
+        res.render("home",{armory:response.data.data})
         res.send()
     })
     console.log('the currently logged in user is:', res.locals.user)
 })
 
 // Controllers
-app.use("/guns",require("./controllers/guns"))
+app.use("/armory",require("./controllers/armory"))
 app.use("/users",require("./controllers/users"))
 
 
