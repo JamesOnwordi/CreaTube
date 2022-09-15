@@ -1,0 +1,19 @@
+
+<h2>Favorites</h2>
+
+<% favorites.forEach(favorite =>{%> 
+    <div>
+        <ul>
+               <li>
+                <p> <%= favorite.name %></p>
+                <img src="<%= favorite.image %>" alt=""></p>
+                <a href=""><button>Get Details</button></a>
+                <a href=""><button>Change Skin</button></a>
+                <a href=""><button>Remove Weapon</button></a>
+               </li>
+        </ul>
+    </div>
+    <% }) %> 
+
+   
+    

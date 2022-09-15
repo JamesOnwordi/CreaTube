@@ -5,6 +5,16 @@ password: VARCHAR 255 (string)
 
 sequelize model:create --name user --attributes email:string,password:string
 
+USER MODEL
+----------
+name
+uuid
+pic
+userId
+
+sequelize model:create --name favourite --attributes name:string,uuid:string,image:text,userId:integer
+
+
 sequelize model:create --name gun --attributes uuid:string,name:string,pic:text,stat:json,userId:integer,commentId:integer
 sequelize model:create --name skin --attributes id:integer,name:text,video:string
 sequelize model:comment --name comment --attributes id:integer,comment:text
