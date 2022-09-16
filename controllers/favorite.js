@@ -60,7 +60,6 @@ router.get("/skin/:id",(req,res)=>{
                     }) 
                 })
                 console.log("here")
-                res.send(data)
                 res.render("armory/skin",{skins:store,oldId:req.params.id})
                 console.log("here")
                 }).catch(err=>{
@@ -97,6 +96,21 @@ router.put("/skin/:id",(req,res)=>{
     }) 
    
 })
+
+
+// want to update for showing video
+// router.put("/skin/video",(req,res)=>{
+
+//     const url = `https://valorant-api.com/v1/weapons/skinchromas/${req.params.id}`
+    
+//     axios.get(url)
+//     .then(async response=>{
+        
+//     }).catch(err=>{
+//         console.log(err)
+//     }) 
+   
+// })
 
 router.delete("/:id",async (req,res)=>{
     const favorite = await db.favorite.destroy({
