@@ -3,29 +3,114 @@ const router = express.Router()
 const db = require("../models")
 const axios = require("axios")
 const methodOveride = require("method-override")
+
 router.use(methodOveride("_method"))
-
-// controllers
-
-
 router.use(express.urlencoded({extended:false}))
+// controllers
 
 // Route to display all favourite weapons
 router.get("/",async(req,res)=>{
     const favorites= await db.favorite.findAll()
-    res.render("armory/favorite",{favorites})
+     res.render("favorite",{favorites})
 })
 
+// Route to display details of a favourite gun
 router.get("/:id",(req,res)=>{
-            const url = `https://valorant-api.com/v1/weapons/${req.params.id}`
-            
+        const url = `https://valorant-api.com/v1/weapons/${req.params.id}`
+        
+        axios.get(url)
+        .then(response=>{
+                    const data= response.data.data 
+                    res.render("armory/detail",{armory:data})
+            })
+            .catch(err=>{
+            console.log(err)
+            }) 
+})
+
+router.get("/skin/:id",(req,res)=>{
+        const url = `https://valorant-api.com/v1/weapons/${req.params.id}`
+
+        console.log(req.params.id)
+        
             axios.get(url)
             .then(response=>{
-                     const data= response.data.data
-                     console.log(data) 
-                     res.render("armory/show",{armory:data})
-             })   
+                const datas= response.data.data.skins 
+                console.log("here")
+                let store =[]
+                datas.forEach(skin =>{
+                    skin.chromas.forEach(chroma=>{  
+                        if(chroma.streamedVideo){
+                                if(chroma.displayIcon && chroma.swatch){  
+                                store.push({
+                                    uuid:chroma.uuid,  
+                                    displayName:chroma.displayName,             
+                                    swatch:chroma.swatch,    
+                                    displayIcon:chroma.displayIcon  
+                                })     
+                            }else if(chroma.fullRender && chroma.swatch){
+                                store.push({
+                                    uuid:chroma.uuid,
+                                    displayName:chroma.displayName,            
+                                    swatch:chroma.swatch,    
+                                    displayIcon:chroma.fullRender
+                                })
+                                }
+                        }     
+                    }) 
+                })
+                console.log("here")
+                res.send(data)
+                res.render("armory/skin",{skins:store,oldId:req.params.id})
+                console.log("here")
+                }).catch(err=>{
+                        console.log(err)
+                }) 
+}) 
+
+router.put("/skin/:id",(req,res)=>{
+
+    const url = `https://valorant-api.com/v1/weapons/skinchromas/${req.params.id}`
+    
+    axios.get(url)
+    .then(async response=>{
+        
+        const datas= response.data
+        let value
+        if(datas.data.displayIcon){
+            value = datas.data.displayIcon
+        }else{
+            value = datas.data.fullRender
+        }
+          
+        await db.favorite.update({
+            image:value
+        },{
+            where:{
+                uuid:req.body.oldId
+            }
+            
+        })
+        res.redirect("/favorite")
+    }).catch(err=>{
+        console.log(err)
+    }) 
+   
 })
+
+router.delete("/:id",async (req,res)=>{
+    const favorite = await db.favorite.destroy({
+        where:{id:req.params.id}
+    })
+    res.redirect("/favorite")
+})
+
+
+
+ 
+
+
+
 
 // // GET Route to display a favourite weapon
 // router.get("/:id",(req,res)=>{
@@ -53,11 +138,6 @@ router.get("/:id",(req,res)=>{
 // }
 
 // Route to delete a favourite weapons
-router.delete("/:id",async (req,res)=>{
-    const favorite = await db.favorite.destroy({
-        where:{id:req.params.id}
-    })
-    res.redirect("/favorite")
-})
+
 
 module.exports = router

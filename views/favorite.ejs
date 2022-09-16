@@ -8,16 +8,19 @@
                 <p> <%= favorite.name %></p>
                 <img src="<%= favorite.image %>" alt=""></p>
                 <a href="favorite/<%=favorite.uuid%>"><button>Get Details</button></a>
-                    <button> Change Skin</button>
-                  
-                    <form action="favorite/<%= favorite.id %>/?_method=DELETE" method="post">
+                <a href="favorite/skin/<%=favorite.uuid%>"><button> Change Skin</button></a>  
+                <a href="/users"><button>Add To Favorite</button></a>
+                <form action="favorite/<%= favorite.id %>/?_method=DELETE" method="post">
                         <p></p>
                         <button>Remove Favorite</button>
-                    </form>
+                </form>
+                    
                </li>
         </ul>
     </div>
     <% }) %> 
+
+    
 
    
     

@@ -33,14 +33,7 @@ app.use(async (req, res, next) => {
 })
 
 app.get("/",(req,res)=>{
-    const url = "https://valorant-api.com/v1/weapons"
-
-    axios.get(url)
-    .then(response=>{
-        // console.log(response)
-        res.render("home",{armory:response.data.data})
-        res.send()
-    })
+    res.redirect("users")
     console.log('the currently logged in user is:', res.locals.user)
 })
 

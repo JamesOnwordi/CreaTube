@@ -33,3 +33,30 @@
     <p></p>
     <button>Submit</button>
 </form>
+
+
+<div>
+    <% if(chroma.streamedVideo){%>
+        <%   if(chroma.displayIcon){%>
+            <%=chroma.uuid  %>  
+            <%=chroma.displayName %>             
+            <img src="<%=chroma.swatch %>" alt="">    
+            <video width="320" height="240" controls>
+                <source src="<%=chroma.streamedVideo%>" type="video/mp4">
+              </video>
+             <img src="<%=chroma.displayIcon%> " alt="">
+             <%=chroma.displayIcon%> 
+                             
+              <%  }%> 
+        <% }else if(chroma.fullRender){%> 
+            <%=chroma.uuid  %>  
+                    <%=chroma.displayName %>             
+                    <img src="<%=chroma.swatch %>" alt="">    
+                    <video width="320" height="240" controls>
+                        <source src="<%=chroma.streamedVideo%>" type="video/mp4">
+                      </video>
+                     <img src="<%=chroma.fullRender%> " alt="">
+                     <%=chroma.displayIcon%> 
+        <%}%> 
+</div>
+ 

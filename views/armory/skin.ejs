@@ -1,36 +1,19 @@
-
 <h2>Change Skin</h2>
-<form action="/1" method="post">
+
+    <%skins.forEach(skin =>{%>
     <div>
-        <p>
-            <label for="uuid">uuid:</label>
-        </p>
-        <input type="text" name="uuid" id="uuid" >       
+        <p> <%=skin.displayName %>  </p>            
+        <img src="<%=skin.swatch %>" alt="">    
+        <img src="<%=skin.displayIcon%> " alt=""> 
+        <%=skin.uuid%>
+        <% let id = skin.displayIcon %> 
+        <form action="/users/favorite/skin/<%=skin.uuid%>/?_method=PUT" method="post">
+            <input type="text" name="oldId" value="<%=oldId%>">
+            <button>Make Default Favorite Skin</button>
+        </form>
+        
     </div>
-    <div> 
-        <p>
-            <label for="name">displayName:</label>
-        </p>
-        <input type="text" name="name" id="name" > 
-    </div>
-    <div>
-        <p>
-            <label for="stats">Stats:</label>
-        </p>
-        <input type="text" name="stats" id="stats" >
-    </div>
-    <div>
-        <p>
-            <label for="video">Video-Link:</label>
-        </p>
-        <input type="text" name="video" id="video" >
-    </div>
-    <div>
-        <p>
-            <label for="userId">userId:</label>
-        </p>
-        <input type="text" name="userId" id="userId" >
-    </div>
-    <p></p>
-    <button>Submit</button>
-</form>
+    <% }) %> 
+                          
+                     
+
