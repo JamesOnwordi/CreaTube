@@ -4,10 +4,10 @@
 CreaTube is a platform where creators upload models of games charater, gun models ideas
 ## User Stories
 
-* As a user, I want to make a new models(characters,guns,gears...)
-* As a user, I want to view other designers models
+* As a user, I want to make a favorite a models(characters,guns,gears...)
+* As a user, I want to view all models
 * As a user, I want to be able to leave a comment on other models
-* As a user, I want to delete projects and update models I've made
+* As a user, I want to delete a model from my favorite list  and update the list I've made
 
 ## API Used
 https://dash.valorant-api.com/
@@ -35,8 +35,7 @@ https://dash.valorant-api.com/
 * A home page that user can navigate to other routes
 * A Page for displaying creators ideas
 * A comment section for a model
-* Have a gun and characters model
-* A users created model and favorite model
+* Have a favorite gun and characters model
 
 ## Stretch Goal
 * Characters Model
