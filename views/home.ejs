@@ -1,10 +1,12 @@
 
+
       <div class="container text-center">
         <div class="row">
           <div class="col">
             Column
           </div>
-          <div class="col">
+          
+           <div class="col">
             <div class="container">
                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
                     <div class="carousel-indicators">
@@ -15,20 +17,28 @@
                             <% count ++ %>
                         <% }) %> 
                     </div>
-                    <div class="carousel-inner">
+                    <div class="carousel-inner carouselDiv">
                         <% count = 0 %>
                         <div class="carousel-item active container">
-                            <div>
-                                <img src="<%=(armories[count].displayIcon)%>"   alt="...">
+                            <div class ="carouselImageDiv">
+                              <div class="  d-block w-100">
+                                <div class="item  w-100">
+                                 <img src="<%=(armories[count].displayIcon)%>"  width="370px" alt="...">
+                                </div>
+                              </div>
+                               
                             </div>
                             
                         </div>
                         <% armories.forEach(armory=>{%>
                             <% if(count !== 0){ %> 
-                            <div class="carousel-item container">
-                                <div>
-                                    <img src="<%=(armory.displayIcon)%>"   alt="...">
+                            <div class="carousel-item container carouselImageDiv">
+                              <div class="  d-block w-100">
+                                <div class="item  w-100">
+                                  <img src="<%=(armory.displayIcon)%>" width="370px"   alt="...">
                                 </div>
+                              </div>
+                                   
                             </div>
                             <%}%>
                             <%count++%>
@@ -44,25 +54,41 @@
                       </button>
                     </div>
               </div>
-          </div>
+          </div> 
+  
+          
           <div class="col">
             Column
           </div>
         </div>
       </div>
-      <div class="container">
+      <div>
+        <div class=" whiteBackground">
         <%for(let i = 0;i<armories.length;i++){%>
-            <% if(i%3 == 0){ %> 
+            <% if(i%4 == 0){ %> 
             <div class="container text-center">
                 <div class="row">
                 <% } %> 
-              <div class="col">
-                <a href="armory/<%=armories[i].uuid%>"><img src="<%=armories[i].displayIcon%>"   alt="..."></a>
                 
+              <a href="armory/<%=armories[i].uuid%>" class="col imageDiv bg-image hover-overlay hover-zoom hover-shadow ripple p-3 mb-5 bg-body rounded span4">
+                
+                <div class="imageDiv col shadow-lg p-3 mb-5 bg-body rounded span4 bg-image hover-overlay hover-zoom hover-shadow ripple"> 
+              <div>
+                  <img class="img-fluid" src="<%=armories[i].displayIcon%>"   alt="...">
               </div>
-              <% if(i%3 == 2){ %> 
+              <div>
+                <p class="weaponName"><%=armories[i].displayName%></p>
+              </div> 
+              </div>
+            </a>
+
+
+              <% if(i%4 == 3){ %> 
               </div>
             </div>
             <% } %> 
           <% } %> 
       </div>
+      </div>
+      
+      

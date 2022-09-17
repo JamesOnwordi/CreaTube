@@ -28,43 +28,44 @@ router.get("/:id",(req,res)=>{
             }) 
 })
 
-router.get("/skin/:id",(req,res)=>{
+router.get("/skin/:id",async (req,res)=>{
+    try{
         const url = `https://valorant-api.com/v1/weapons/${req.params.id}`
 
-        console.log(req.params.id)
-        
-            axios.get(url)
-            .then(response=>{
-                const datas= response.data.data.skins 
-                console.log("here")
-                let store =[]
-                datas.forEach(skin =>{
-                    skin.chromas.forEach(chroma=>{  
-                        if(chroma.streamedVideo){
-                                if(chroma.displayIcon && chroma.swatch){  
-                                store.push({
-                                    uuid:chroma.uuid,  
-                                    displayName:chroma.displayName,             
-                                    swatch:chroma.swatch,    
-                                    displayIcon:chroma.displayIcon  
-                                })     
-                            }else if(chroma.fullRender && chroma.swatch){
-                                store.push({
-                                    uuid:chroma.uuid,
-                                    displayName:chroma.displayName,            
-                                    swatch:chroma.swatch,    
-                                    displayIcon:chroma.fullRender
-                                })
-                                }
-                        }     
-                    }) 
-                })
-                console.log("here")
-                res.render("armory/skin",{skins:store,oldId:req.params.id})
-                console.log("here")
-                }).catch(err=>{
-                        console.log(err)
+        console.log("REQ.PARAM",url)
+
+        const response = await axios.get(url)
+        // console.log(response)
+        const datas= response.data.data.skins 
+        // console.log("DATAS",datas)
+            let store =[]
+            datas.forEach(data =>{
+                data.chromas.forEach(chroma=>{  
+                    // console.log("CHROMA",chroma)
+                    if(chroma.streamedVideo){
+                            if(chroma.displayIcon && chroma.swatch){  
+                            store.push({
+                                uuid:chroma.uuid,  
+                                displayName:chroma.displayName,             
+                                swatch:chroma.swatch,    
+                                displayIcon:chroma.displayIcon  
+                            })     
+                        }else if(chroma.fullRender && chroma.swatch){
+                            store.push({
+                                uuid:chroma.uuid,
+                                displayName:chroma.displayName,            
+                                swatch:chroma.swatch,    
+                                displayIcon:chroma.fullRender
+                            })
+                            }
+                    }     
                 }) 
+            })
+            // res.send(store)
+             res.render("armory/skin",{skins:store,oldId:req.params.id})
+        }catch(err){
+            console.log(err)
+        } 
 }) 
 
 router.put("/skin/:id",(req,res)=>{
@@ -112,6 +113,7 @@ router.put("/skin/:id",(req,res)=>{
    
 // })
 
+// Route to delete a favourite weapons
 router.delete("/:id",async (req,res)=>{
     const favorite = await db.favorite.destroy({
         where:{id:req.params.id}
@@ -151,7 +153,6 @@ router.delete("/:id",async (req,res)=>{
 //     console.log(err)
 // }
 
-// Route to delete a favourite weapons
 
 
 module.exports = router
