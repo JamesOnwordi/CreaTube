@@ -1,25 +1,171 @@
-  <ul>
-  <li>
-      <div>
-          <p> <%= armory.displayName %></p>
-          <p><%=armory.shopData.category%></p>
-          <p><%=armory.weaponStats.fireRate%></p>
-          <p><%=armory.weaponStats.magazineSize%></p>
-          <p><%=armory.weaponStats.runSpeedMultiplier%></p>
-          <p><%=armory.weaponStats.equipTimeSeconds%></p>
-          <p><%=armory.weaponStats.firstBulletAccuracy%></p>
-          <p><%=armory.weaponStats.shotgunPelletCount%></p>
-          <p><%=armory.weaponStats.wallPenetration%></p>
-          <p><%=armory.weaponStats.fireMode%></p>
-          <p>Head Damage:<%=armory.weaponStats.damageRanges[0].headDamage%></p>
-          <p>Body Damage:<%=armory.weaponStats.damageRanges[0].bodyDamage%></p>
-          <p>Leg Damage:<%=armory.weaponStats.damageRanges[0].legDamage%></p>
+    <head>
+      <style>
+        body{
+          background-image: url("https://media.valorant-api.com/weaponskins/d21e2975-4586-635c-3fe4-e6be738243b3/wallpaper.png");
+          text-align: center;
+        }
+        .display{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 600px;
+        }
+      </style>
+    </head>
+
+
+
+    <%if(armory.displayName =="Melee"){%>
+      <div class="container text-center">
+        <div class="row">
+          <div class="col">
+            <div class="display">
+            </div>
+          </div>
+          <div class="col">
+            <div class="display">
+              <div>
+                <div><h1><%= armory.displayName %></h1>
+            </div>
+            <div ><img src="<%=armory.displayIcon%>"></div>
+            <div>
+              <form action="<%=armory.uuid%>" method="post">
+                <button>Add to favorite</button>
+              </form>
+            </div>
+              </div>
+              
+            </div>
+            </div>
+            
+          <div class="col">
+            <div class="display">
+              
+              
+             </div>
+          </div>
+        </div>
       </div>
-      <div><img src="<%=armory.displayIcon%>">
-        <form action="<%=armory.uuid%>" method="post">
-          <button>Add to favorite</button>
-        </form>
+      <% }else{ %> 
+
+    <div class="container text-center">
+      <div class="row">
+        <div class="col">
+          <div class="display">
+            <p><%=armory.shopData.category%></p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="display">
+            <div>
+              <div><h1><%= armory.displayName %></h1>
+          </div>
+          <div ><img src="<%=armory.displayIcon%>"></div>
+          <div>
+            <form action="<%=armory.uuid%>" method="post">
+              <button>Add to favorite</button>
+            </form>
+          </div>
+            </div>
+            
+          </div>
+          </div>
+          
+        <div class="col">
+          <div class="display">
+            <div>
+              <p>Head Damage:<%=armory.weaponStats.damageRanges[0].headDamage%></p>
+            <p>Body Damage:<%=armory.weaponStats.damageRanges[0].bodyDamage%></p>
+            <p>Leg Damage:<%=armory.weaponStats.damageRanges[0].legDamage%></p>
+            </div>
+            
+           </div>
+        </div>
       </div>
-  </li>
-</ul>
+    </div>
+
+
+
+
+    
+    
+  </div></div>
+
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <%if(armory.weaponStats.fireRate){%>
+          <th scope="col">fireRate</th>
+          <% } %> 
+          <%if(armory.weaponStats.magazineSize){%>
+          <th scope="col">magazineSize</th>
+          <% } %> 
+          <%if(armory.weaponStats.runSpeedMultiplier){%>
+          <th scope="col">runSpeedMultiplier</th>
+          <% } %> 
+          <%if(armory.weaponStats.equipTimeSeconds){%>
+          <th scope="col">equipTimeSeconds</th>
+          <% } %> 
+          <%if(armory.weaponStats.firstBulletAccuracy){%>
+          <th scope="col">firstBulletAccuracy</th>
+          <% } %> 
+          <%if(armory.weaponStats.shotgunPelletCount){%>
+          <th scope="col">shotgunPelletCount</th>
+          <% } %> 
+          <%if(armory.weaponStats.wallPenetration){%>
+          <th scope="col">wallPenetration</th>
+          <% } %> 
+          <%if(armory.weaponStats.fireMode){%>
+          <th scope="col">fireMode</th>
+          <% } %> 
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <%if(armory.weaponStats.fireRate){%>
+          <td><%=armory.weaponStats.fireRate%></td>
+          <% } %> 
+          <%if(armory.weaponStats.magazineSize){%>
+          <td><%=armory.weaponStats.magazineSize%></td>
+          <% } %> 
+          <%if(armory.weaponStats.runSpeedMultiplier){%>
+          <td><%=armory.weaponStats.runSpeedMultiplier%></td>
+          <% } %> 
+          <%if(armory.weaponStats.equipTimeSeconds){%>
+          <td><%=armory.weaponStats.equipTimeSeconds%></td>
+          <% } %> 
+          <%if(armory.weaponStats.firstBulletAccuracy){%>
+          <td><%=armory.weaponStats.firstBulletAccuracy%></td>
+          <% } %> 
+          <%if(armory.weaponStats.shotgunPelletCount){%>
+          <td><%=armory.weaponStats.shotgunPelletCount%></td>
+          <% } %> 
+          <%if(armory.weaponStats.wallPenetration){%>
+          <td><%=armory.weaponStats.wallPenetration%></td>
+          <% } %> 
+          <%if(armory.weaponStats.fireMode){%>
+            <td><%=armory.weaponStats.fireMode%></td>
+          <% } %> 
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <% } %> 
+  
+          <div>
+          
+          
+          
+          
+          
+          
+          
+          
+          </div>
+          
+      
+      </div>
+    </div>
+  
                 

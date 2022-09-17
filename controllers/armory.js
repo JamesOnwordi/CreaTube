@@ -93,7 +93,7 @@ router.get("/:id",(req,res)=>{
         
         axios.get(url)
          .then(response=>{
-             res.render("armory/detail",{armory:response.data.data,document})
+             res.render("armory/detail",{armory:response.data.data})
         }).catch(err=>{
             console.log(err)
          })
