@@ -7,6 +7,7 @@ const axios =require("axios")
 
 
 router.use("/armory",require("./armory"))
+router.use("/video",require("./video"))
 router.use("/favorite",require("./favorite"))
 
 // GET /users/new -- render a form to create a new user
@@ -21,7 +22,7 @@ router.get("/",(req,res)=>{
     .then(response=>{
         // console.log(response)
         // res.send(response.data.data)
-        res.render("armory/home",{armories:response.data.data})
+        res.render("users/profile",{armories:response.data.data})
         
     })
     // console.log('the currently logged in user is:', res.locals.user)

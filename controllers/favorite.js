@@ -37,6 +37,7 @@ router.get("/",async(req,res)=>{
 //             }) 
 // })
 
+// Route to display a favourite weapons skin
 router.get("/:skin",async (req,res)=>{
     try{
         const url = `https://valorant-api.com/v1/weapons/${req.query.id}`
@@ -75,6 +76,7 @@ router.get("/:skin",async (req,res)=>{
         } 
 }) 
 
+// Route to update a favourite weapons skin
 router.put("/skin/:id",(req,res)=>{
     console.log(req.query)
     console.log(req.params)
@@ -117,21 +119,6 @@ router.put("/skin/:id",(req,res)=>{
     }) 
    
 })
-
-
-// want to update for showing video
-// router.put("/skin/video",(req,res)=>{
-
-//     const url = `https://valorant-api.com/v1/weapons/skinchromas/${req.params.id}`
-    
-//     axios.get(url)
-//     .then(async response=>{
-        
-//     }).catch(err=>{
-//         console.log(err)
-//     }) 
-   
-// })
 
 // Route to delete a favourite weapons
 router.delete("/:id",async (req,res)=>{
