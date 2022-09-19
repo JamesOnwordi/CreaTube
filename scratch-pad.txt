@@ -5,54 +5,26 @@ password: VARCHAR 255 (string)
 
 sequelize model:create --name user --attributes email:string,password:string
 
-USER MODEL
+FAVORITE MODEL
 ----------
 name
 uuid
-pic
+image
 userId
 
 sequelize model:create --name favourite --attributes name:string,uuid:string,image:text,userId:integer
+
+REACTION MODEL
+----------
+like
+dislike
+uuid
+userId
+
+sequelize model:create --name reaction --attributes like:integer,dislike:integer,uuid:text,userId:integer
 
 
 sequelize model:create --name gun --attributes uuid:string,name:string,pic:text,stat:json,userId:integer,commentId:integer
 sequelize model:create --name skin --attributes id:integer,name:text,video:string
 sequelize model:comment --name comment --attributes id:integer,comment:text
 
-fireRate:integer,magazineSize:integer,runSpeedMultiplier:integer,equipTimeSeconds:integer,reloadTimeSeconds:integer,headDamage:integer,bodyDamage:integer,legDamage:integer
-
-name: DataTypes.STRING,
-    pic: DataTypes.TEXT,
-    stats: DataTypes.JSON,
-    uuid: DataTypes.STRING,
-    userId: DataTypes.INTEGER,
-    commentId: DataTypes.INTEGER
-
-gun
-----
-id
-name
-pic
-
-skin
------
-id
-name
-video
-
-stat
---------
-id
-fireRate
-magazineSize
-runSpeedMultiplier
-equipTimeSeconds
-reloadTimeSeconds
-headDamage
-bodyDamage
-legDamage
-
-comment
--------
-id 
-text
