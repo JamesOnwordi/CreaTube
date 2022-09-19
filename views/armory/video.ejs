@@ -84,16 +84,16 @@
                             </div> 
                             <div class="centerAlign">
                                <div>
-                                <form action="/users/favorite/video?id=<%=skins[i].uuid%>&react=<%1%>" method="post">
-                                    <button class="btn btn-outline-success"> <img src="https://www.freepnglogos.com/uploads/like-png/file-like-svg-wikimedia-commons-22.png" alt="" width="42px"></button>
+                                <form action="/users/favorite/video?id=<%=skins[i].uuid%>&react=<%="like"%>" method="post">
+                                    <button id="like" class="btn btn-outline-success"> <img src="https://www.freepnglogos.com/uploads/like-png/file-like-svg-wikimedia-commons-22.png" alt="" width="42px"></button>
                                 </form>
-                                <p><%=skins.like%></p>  
+                                <p><%=skins[i].like%></p>  
                                </div>
                                <div>
-                                <form action="/users/favorite/video?id=<%=skins[i].uuid%>&react=<%2%>" method="post">
-                                    <button class="btn btn-outline-danger"><img src="https://www.freepnglogos.com/uploads/like-png/file-like-svg-wikimedia-commons-22.png" style="transform: rotate(180deg);" alt="" width="42px"></button>
+                                <form action="/users/favorite/video?id=<%=skins[i].uuid%>&react=<%="dislike"%>" method="post">
+                                    <button id=" dislike" class="btn btn-outline-danger"><img src="https://www.freepnglogos.com/uploads/like-png/file-like-svg-wikimedia-commons-22.png" style="transform: rotate(180deg);" alt="" width="42px"></button>
                                 </form>
-                                    <p><%=skins.dislike%></p>                     
+                                    <p><%=skins[i].dislike%></p>                     
                                </div>
                             </div>
 

@@ -12,36 +12,32 @@ router.get("/",async (req,res)=>{
         const url = `https://valorant-api.com/v1/weapons`
 
         const response = await axios.get(url)
-        
+        const reactions =  await db.reaction.findAll()
+
         // console.log(response)
         const datas= response.data.data 
         // console.log("DATAS",datas)
 
             let store =[]
-            datas.forEach(data =>{
+            datas.forEach( data =>{
                 data.skins.forEach(skin =>{
                 skin.chromas.forEach( chroma=>{  
                     // console.log("CHROMA",chroma)
-                    console.log("waiting")
-                    const reactions =  db.reaction.findAll({
-                        where:{
-                            uuid:chroma.uuid
-                        }
-                    })
-                    
                     let liked =0
                     let disliked =0
-                    if(reactions.data){
-                    reactions.data.forEach( reaction=>{
 
-                        let liked =liked ++
-                        let disliked =dislike ++
+                    reactions.forEach(reaction=>{
+                        if(reaction.uuid == chroma.uuid){
+                            if(reaction.like){
+                                liked ++
+                            }
+                            else if(reaction.dislike){
+                                disliked ++
+                            }
+                        }
                     })
-                    }
-                    
-                    console.log("HEREREFR")
-                         if(chroma.streamedVideo){  
-                            console.log("inside")
+
+                         if(chroma.streamedVideo){ 
                             store.push({ 
                                 name:chroma.displayName,
                                 video:chroma.streamedVideo,
@@ -54,8 +50,7 @@ router.get("/",async (req,res)=>{
                 }) 
             })
             console.log("store")
-            console.log(store)
-            res.render("armory/video",{skins:store,})
+            res.render("armory/video",{skins:store})
         }catch(err){
             console.log(err)
         } 
@@ -118,24 +113,24 @@ router.get("/:id",async (req,res)=>{
 }) 
 
 router.post("/",async (req,res)=>{
-    console.log("REQ.params",req.params)
+    console.log("REQ.params",req.query)
     try{
         const reaction = await db.reaction.findOne({
             where:{
                 uuid:req.query.id,
-                userId:res.locals.user
+                userId:res.locals.user.id
             }
         })
         if(reaction){
             if(req.query.react == "like"){
-                if(reaction.like){
+                // if(reaction.like){
                     if(reaction.like){
                         await db.reaction.update({
-                            dislike: 0
+                            like: 0
                             },{
                             where:{
                                 uuid:req.query.id,
-                                userId:res.locals.user
+                                userId:res.locals.user.id
                             }
                         })    
                 }else{
@@ -145,19 +140,18 @@ router.post("/",async (req,res)=>{
                         },{
                         where:{
                             uuid:req.query.id,
-                            userId:res.locals.user
+                            userId:res.locals.user.id
                         }
                     })
                 }
-            }
-            else{
+             }else{
                 if(reaction.dislike){
                     await db.reaction.update({
                         dislike: 0
                         },{
                         where:{
                             uuid:req.query.id,
-                            userId:res.locals.user
+                            userId:res.locals.user.id
                         }
                     })
                 }else{
@@ -167,30 +161,29 @@ router.post("/",async (req,res)=>{
                         },{
                         where:{
                             uuid:req.query.id,
-                            userId:res.locals.user
+                            userId:res.locals.user.id
                         }
                     })
                 }
             }
-        }
         }else{
             // no previous reaction
             if(req.query.react == "like"){
             await db.reaction.create({
                 like:1,
                 uuid:req.query.id,
-                userId:res.locals.user
+                userId:res.locals.user.id
             })}
             else{
                 await db.reaction.create({
                     dislike:1,
                     uuid:req.query.id,
-                    userId:res.locals.user
+                    userId:res.locals.user.id
                 })
             }
         }
 
-            res.redirect("/video")
+            res.redirect("/users/video")
     
         }catch(err){
             console.log(err)
