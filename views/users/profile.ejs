@@ -1,1 +1,39 @@
-<h2>Welcome to your profile <%= user.email %>! 🎉</h2>
+<head>
+    <style>
+      body{
+        background-image: url("https://i.ytimg.com/vi/pRI982rJwXg/maxresdefault.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        text-align: center;
+      }
+      .textPage{
+        color: rgb(40, 206, 132);
+      }
+      .info{
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.938);
+        border: 12px solid rgba(239, 239, 239, 0.116);
+      }
+      .space{
+        margin: 40px;
+      }
+      </style>
+</head>
+      
+<div  class="textPage info container">
+    <h2 class="space">Welcome to your profile <%= user.email %>! 🎉</h2>
+    <div>
+        <a href="/users/armory"><button type="button" class="btn space btn-outline-success btn-lg">Check out Weapons</button></a>
+    </div>
+    <div>
+        <a href="/users/favorite"><button type="button" class="btn space btn-outline-info btn-lg">Go to Favorite Weapons</button></a>
+    </div>
+    <div>
+      <a href="/users/favorite"><button type="button" class="btn space btn-outline-warning btn-lg">Check out Videos</button></a>
+  </div>
+    <div>
+        <a href="/users/logout"><button type="button" class="btn  space btn-outline-danger btn-lg">Log Out</button></a>
+    </div>
+
+   
+</div>

@@ -80,7 +80,7 @@ router.get("/",(req,res)=>{
            } 
         }
 
-         res.render("home",{armories})
+         res.render("armory/home",{armories})
     }).catch(err=>{
         console.log(err)
     })
@@ -90,10 +90,34 @@ router.get("/",(req,res)=>{
 // GET Route to display a weapon
 router.get("/:id",(req,res)=>{
         const url = `https://valorant-api.com/v1/weapons/${req.params.id}`
-        
+
         axios.get(url)
          .then(response=>{
-             res.render("armory/detail",{armory:response.data.data})
+
+            const datas= response.data.data.skins 
+            let store =[]
+            datas.forEach(data =>{
+                data.chromas.forEach(chroma=>{  
+                    // console.log("CHROMA",chroma)
+                        if(chroma.displayIcon){  
+                            store.push({
+                                uuid:chroma.uuid,  
+                                displayName:chroma.displayName,             
+                                swatch:chroma.swatch,    
+                                displayIcon:chroma.displayIcon  
+                            })     
+                        }else if(chroma.fullRender){
+                            store.push({
+                                uuid:chroma.uuid,
+                                displayName:chroma.displayName,            
+                                swatch:chroma.swatch,    
+                                displayIcon:chroma.fullRender
+                            })
+                            }
+                }) 
+            })
+
+             res.render("armory/detail",{armory:response.data.data,images:store})
         }).catch(err=>{
             console.log(err)
          })
@@ -105,10 +129,15 @@ router.post("/:id", (req,res)=>{
         axios.get(url)
         .then( async response=>{
             const armory = response.data.data
+            console.log(res.locals.user.id)
             const favorites = await db.favorite.findOrCreate({
                 where:{
                     uuid: armory.uuid,
-                }  
+                    name:armory.displayName,
+                    image:armory.displayIcon,
+                    userId:res.locals.user.id
+                }
+
                 
             })
             res.redirect("/users/favorite")

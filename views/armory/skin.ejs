@@ -1,19 +1,102 @@
-<h2>Change Skin</h2>
+<head>
+    <style>
+        .whiteBackground{
+            background-color: rgba(255, 255, 255, 0.888);
+            border: 5px;
+            border-radius: 4px;
+            height: 100%;
+            margin: 0px 250px;
+        }
+        .background{
+            background-image: url("https://wallpaperchain.com/download/valorant/valorant-wallpaper-36.jpg");
+            background-size:cover;
+            background-position:center center;
+            background-attachment:fixed;
+        }
+        .centerAlign{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        a{
+            text-decoration: none;
+        }
+        .imageDiv{
+            margin: 20px;
+        }
+        button{
+            margin: 10px;
+        }
+        .innerDiv{
+            width: 300px;
+        }
+        .page{
+        margin :150px 0px 0px 0px;
+      }
+      .header{
+            background-image: url("https://wallpaperchain.com/download/valorant/valorant-wallpaper-36.jpg");
+            height: 500px;
+            background-size:cover;
+            background-position:center center;
+            background-attachment:fixed;
+            color:rgb(244, 247, 203);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+      .headerName{
+        color:rgba(247, 241, 203, 0.818);
+        font-size: 400px;
+      }
 
-    <%skins.forEach(skin =>{%>
-    <div>
-        <p> <%=skin.displayName %>  </p>            
-        <img src="<%=skin.swatch %>" alt="">    
-        <img src="<%=skin.displayIcon%> " alt=""> 
-        <%=skin.uuid%>
-        <% let id = skin.displayIcon %> 
-        <form action="/users/favorite/skin/<%=skin.uuid%>/?_method=PUT" method="post">
-            <input type="text" name="oldId" value="<%=oldId%>">
-            <button>Make Default Favorite Skin</button>
-        </form>
+    </style>
+</head>
+
+<div class="header">
+    <h1 class="headerName">Skins</h1>
+</div>
+
+
+       
+
+            <div class="background">
+                 <%for(let i = 0;i<skins.length;i++){%>
+            <% if(i%3 == 0){ %> 
+            <div class=" whiteBackground ">
+                <div class="row">
+            <% } %> 
+            <div class="imageDiv shadow-lg text-center col "> 
+                <div>
+                    
+                        <div>
+                            <p> <%=skins[i].displayName %>  </p>
+                            <img src="<%=skins[i].displayIcon%> " width="300" alt=""> 
+                            <% let id = skins[i].displayIcon %> 
+                            <form action="/users/favorite/skin/<%=skins[i].uuid%>/?_method=PUT&id=<%=oldId%>&image=<%=image%>" method="post">
+                                
+                                <button>Make Default Favorite Skin</button>
+                            </form>
+                            
+                        </div> 
+
+                </div>
+          </div>
+
+
+          <% if(i%3 == 2){ %> 
+          </div>
+        </div>
+        <% } %> 
         
-    </div>
-    <% }) %> 
-                          
-                     
+      <% } %> 
+      <div>
+        
+      </div>
+      
+</div>
 
+</div>
+
+            </div>
+                
+                

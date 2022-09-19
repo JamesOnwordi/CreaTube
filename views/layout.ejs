@@ -8,46 +8,69 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     <!-- <link rel="stylesheet" href="./styles.css"> -->
+    <style>
+      .fixedNav{
+        height: 80px;
+        display: fixed;
+      }
+      .main{
+        margin :120px 0px 0px 0px;
+        position: relative;
+      }
+    </style>
 </head>
 <body>
-    
-    <nav class="navbar bg-light navImage">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            <img src="https://cdn.dribbble.com/userupload/3158902/file/original-7c71bfa677e61dea61bc2acd59158d32.jpg?resize=400x0" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-            Creatube
-          </a>
-                 <% if (user) { %>
-                            <a href="/users"> <button type="button" class="btn btn-outline-primary">Home</button> </a>
-                            <a href="/users/armory"> <button type="button" class="btn btn-outline-success">Guns</button> </a>
-                            <a href="/users/armory"> <button type="button" class="btn btn-outline-success">Characters</button> </a>
-                            <a href="/users/favorite"> <button type="button" class="btn btn-outline-secondary">Favorite</button> </a>
-                            <a href="/users/profile"> <button type="button" class="btn btn-outline-danger">Profile</button> </a>                           
-                            <a href="/users/logout"> <button type="button" class="btn btn-outline-danger">Logout</button> </a>                           
-                <% } else { %>
-                            <a href="/users/new"> <button type="button" class="btn btn-outline-warning">Sign In</button> </a>
-                            <a href="/users/login"> <button type="button" class="btn btn-outline-info">Log in</button> </a>            
-                <% } %> 
-
-
-          
-         
-            <!-- if the user is logged in... -->
-            <!-- all data in the res.locals is usuable in the layout -->
+      <nav class="navbar fixedNav fixed-top bg-light navImage">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="/users/profile">
+              <img src="https://cdn.dribbble.com/userupload/3158902/file/original-7c71bfa677e61dea61bc2acd59158d32.jpg?resize=400x0" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+              Creatube
+            </a>
+                   <% if (user) { %>
+                              <a href="/users/armory"> <button type="button" class="btn btn-outline-success">Weapon</button> </a>
+                              <a href="/users/favorite"> <button type="button" class="btn btn-outline-info">Favorite</button> </a>
+                              <a href="/users/favorite/video"> <button type="button" class="btn btn-outline-warning">Videos</button> </a>
+                              <a href="/users/profile"> <button type="button" class="btn btn-outline-secondary">Profile</button> </a>                           
+                              <a href="/users/logout"> <button type="button" class="btn btn-outline-danger">Logout</button> </a>                           
+                  <% } else { %>
+                              <a href="/users/new"> <button type="button" class="btn btn-outline-warning">Sign In</button> </a>
+                              <a href="/users/login"> <button type="button" class="btn btn-outline-info">Log in</button> </a>            
+                  <% } %> 
+  
+  
             
-        </div>
-      </nav>
-    <%-body%> 
+           
+              <!-- if the user is logged in... -->
+              <!-- all data in the res.locals is usuable in the layout -->
+              
+          </div>
+        </nav>
+    
+    <div class="main ">
+      <%-body%> 
+    </div>
 </body>
 <script>
     console.log("hi")
          const image = document.querySelectorAll(".imageDiv")
-        
+         const body = document.querySelector("body")
          image.forEach(img =>{
           img.addEventListener("mouseover",()=>{
             
                img.classList.add("shadow-lg")
+               
+               
+               setTimeout(function() {
+                img.classList.remove("shadow-lg")
+                setTimeout(function() {
+                  img.classList.add("shadow-lg")
+                }, 20);
+              }, 30);
+              
              })
             })
+        
+            
+            
     </script>
 </html>

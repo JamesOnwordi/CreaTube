@@ -34,8 +34,16 @@ app.use(async (req, res, next) => {
 })
 
 app.get("/",(req,res)=>{
-    res.redirect("users")
+
+    if (!res.locals.user) {
+        res.redirect('/users/login?message=You must authenticate before you are authorized to view this resource.')
+    // otherwise, show them their profile
+    } else {
+        res.redirect("users")
     console.log('the currently logged in user is:', res.locals.user)
+    }
+
+    
 })
 
 // Controllers

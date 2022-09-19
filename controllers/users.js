@@ -20,7 +20,9 @@ router.get("/",(req,res)=>{
     axios.get(url)
     .then(response=>{
         // console.log(response)
-        res.render("home",{armories:response.data.data})
+        // res.send(response.data.data)
+        res.render("armory/home",{armories:response.data.data})
+        
     })
     // console.log('the currently logged in user is:', res.locals.user)
 })
@@ -118,9 +120,39 @@ router.get('/profile', (req, res) => {
         res.redirect('/users/login?message=You must authenticate before you are authorized to view this resource.')
     // otherwise, show them their profile
     } else {
+            const url = `https://valorant-api.com/v1/weapons/skinchromas`
+    
+            axios.get(url)
+             .then(response=>{
+                let store =[]
+                    response.data.data.forEach(chroma=>{  
+                        // console.log("CHROMA",chroma)
+                            if(chroma.displayIcon){  
+                                store.push({
+                                    uuid:chroma.uuid,  
+                                    displayName:chroma.displayName,             
+                                    swatch:chroma.swatch,    
+                                    displayIcon:chroma.displayIcon  
+                                })     
+                            }else if(chroma.fullRender){
+                                store.push({
+                                    uuid:chroma.uuid,
+                                    displayName:chroma.displayName,            
+                                    swatch:chroma.swatch,    
+                                    displayIcon:chroma.fullRender
+                                })
+                                }
+                    }) 
+    
+                 res.render("armory/detail",{armory:response.data.data,images:store})
+            
+
         res.render('users/profile.ejs', {
-            user: res.locals.user
+            user: res.locals.user,images:store
         })
+    }).catch(err=>{
+                console.log(err)
+             })
     }
 })
 
