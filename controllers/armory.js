@@ -4,10 +4,9 @@ const db = require("../models")
 const axios = require("axios")
 const methodOveride = require("method-override")
 
-
-
-
 router.use(express.urlencoded({extended:false}))
+
+// controller
 router.use("favorite",require("./favorite"))
 
 // GET Route to display all weapon

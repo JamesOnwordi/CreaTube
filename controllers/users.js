@@ -8,6 +8,7 @@ const axios =require("axios")
 
 router.use("/armory",require("./armory"))
 router.use("/video",require("./video"))
+router.use("/images",require("./images"))
 router.use("/favorite",require("./favorite"))
 
 // GET /users/new -- render a form to create a new user
