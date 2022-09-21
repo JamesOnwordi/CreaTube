@@ -72,7 +72,7 @@
                             <p> <%=skins[i].displayName %>  </p>
                             <img src="<%=skins[i].displayIcon%> " width="300" alt=""> 
                             <% let id = skins[i].displayIcon %> 
-                            <form action="/users/favorite/skin/<%=skins[i].uuid%>/?_method=PUT&id=<%=oldId%>&image=<%=image%>" method="post">
+                            <form action="/users/favorite/skins/<%=skins[i].uuid%>/?_method=PUT&id=<%=oldId%>&image=<%=image%>" method="post">
                                 
                                 <button>Make Default Favorite Skin</button>
                             </form>

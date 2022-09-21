@@ -1,0 +1,117 @@
+<head>
+    <style>
+        .background{
+            background-image: url("https://images8.alphacoders.com/114/1149389.jpg");
+            background-size:cover;
+            background-position:center center;
+            background-attachment:fixed;
+        }
+        .header{
+            background-image: url("https://images8.alphacoders.com/114/1149389.jpg");
+            height: 500px;
+            background-size:cover;
+            background-position:center center;
+            background-attachment:fixed;
+            color:rgb(244, 247, 203);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .whiteBackground{
+            background-color: rgba(255, 255, 255, 0.888);
+            border: 5px;
+            border-radius: 4px;
+            height: 100%;
+            margin: 0px 250px;
+        }
+        .centerAlign{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        a{
+            text-decoration: none;
+        }
+        .imageDiv{
+            width: 650px;
+            margin: 10px;
+        }
+        button{
+            margin: 10px;
+        }
+        .innerDiv{
+            width: 500px;
+        }
+        .page{
+        margin :150px 0px 0px 0px;
+      }
+      .headerName{
+        color:rgba(244, 247, 203, 0.75);
+        font-size: 400px;
+      }
+
+    </style>
+</head>
+
+<div class="header">
+    <h1 class="headerName">Gallery</h1>
+</div>
+
+<div class="background">
+    <div class=" whiteBackground">
+        <div>
+            <h2 class="centerAlign">Welcome</h2>
+        </div>
+    <div>
+        <%for(let i = 0;i<skins.length;i++){%>
+            <% if(i%3 == 0){ %> 
+            <div class="container text-center">
+                <div class="row">
+            <% } %> 
+                
+                <div class="imageDiv shadow-lg col "> 
+                    <div>
+                        <div>
+                            <p>
+                                <%=skins[i].name%>
+                            </p>
+                        </div>
+                            <div>
+                                <video width="320" height="240" controls>
+                                    <source src="<%=skins[i].video%>" type="video/mp4">
+                                    Error Message
+                                  </video>
+                            </div> 
+                            <div class="centerAlign">
+                               <div>
+                                <form action="/users/favorite/video/specific/?newId=<%=skins[i].uuid%>&react=<%="like"%>&oldId=<%=main%>" method="post">
+                                    <button id="like" class="btn btn-outline-success"> <img src="https://www.freepnglogos.com/uploads/like-png/file-like-svg-wikimedia-commons-22.png" alt="" width="42px"></button>
+                                </form>
+                                <p><%=skins[i].like%></p>  
+                               </div>
+                               <div>
+                                <form action="/users/favorite/video/specific/?newId=<%=skins[i].uuid%>&react=<%="dislike"%>&oldId=<%=main%>" method="post">
+                                    <button id=" dislike" class="btn btn-outline-danger"><img src="https://www.freepnglogos.com/uploads/like-png/file-like-svg-wikimedia-commons-22.png" style="transform: rotate(180deg);" alt="" width="42px"></button>
+                                </form>
+                                    <p><%=skins[i].dislike%></p>                     
+                               </div>
+                            </div>
+
+                    </div>
+              </div>
+    
+    
+              <% if(i%3 == 2){ %> 
+              </div>
+            </div>
+            <% } %> 
+            
+          <% } %> 
+          <div>
+            
+          </div>
+          
+    </div>
+    
+  </div>
+</div>

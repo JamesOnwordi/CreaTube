@@ -102,7 +102,7 @@ router.post('/login', async (req, res) => {
             res.redirect('/users/profile')
         }
     } catch(err) {
-        console.log(err,"2")
+        console.log(err)
         res.send('server error')
     }
 })
@@ -123,6 +123,7 @@ router.post('/comment',async (req,res)=>{
     res.redirect("/")
 })
 
+// Route to profiles page
 router.get('/profile', (req, res) => {
     // if the user is not logged ... we need to redirect to the login form
     if (!res.locals.user) {

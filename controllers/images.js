@@ -7,6 +7,7 @@ const methodOveride = require("method-override")
 router.use(methodOveride("_method"))
 router.use(express.urlencoded({extended:false}))
 
+// Route to display all weapon's skin images
 router.get("/",async (req,res)=>{
     try{
         const url = `https://valorant-api.com/v1/weapons/skins`
@@ -53,7 +54,7 @@ router.get("/",async (req,res)=>{
                                  
                 }) 
             })
-            // res.send(store)
+            
              res.render("armory/images",{skins:store,oldId:req.query.id,image:req.query.image})
         }catch(err){
             console.log(err)

@@ -81,13 +81,13 @@ router.get("/",(req,res)=>{
         }
 
          res.render("armory/home",{armories})
+
     }).catch(err=>{
         console.log(err)
     })
-    // console.log('the currently logged in user is:', res.locals.user)
 })
 
-// GET Route to display a weapon
+// GET Route to display a specific weapon and it's stats
 router.get("/:id",(req,res)=>{
         const url = `https://valorant-api.com/v1/weapons/${req.params.id}`
 
@@ -123,7 +123,7 @@ router.get("/:id",(req,res)=>{
          })
 })
 
-//POST Route to add a weapon to favorite
+// POST Route to add a weapon to favorite
 router.post("/:id", (req,res)=>{
         const url = `https://valorant-api.com/v1/weapons/${req.params.id}`       
         axios.get(url)
@@ -145,31 +145,5 @@ router.post("/:id", (req,res)=>{
             console.log(err)
          })
 })
-
-// 
-// // new model
-// router.get("/new",(req,res)=>{
-//     res.render("armory/new")
-    
-// })
-
-// router.post("/new",(req,res)=>{
-//     // added
-//     console.log(req.body)
-//     // add new model to db
-//     res.redirect("/armory")
-// })
-
-
-// router.get("/update",(req,res)=>{
-//     res.render("armory/update")  
-// })
-
-// router.post("/update",(req,res)=>{
-//     // added
-//     console.log(req.body)
-//     // add new model to db
-//     res.redirect("/updates")
-// })
 
 module.exports = router
