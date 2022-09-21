@@ -116,6 +116,7 @@ router.get('/logout', (req, res) => {
     res.redirect('/')
 })
 
+// Route to leave a note profile page
 router.post('/comment',async (req,res)=>{
     const note = await db.note.create({
         note:req.body.note,
