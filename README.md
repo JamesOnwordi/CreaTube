@@ -1,43 +1,57 @@
 # CreaTube
 
 ## Project Idea
-CreaTube is a platform where creators upload models of games charater, gun models ideas
+
+CreaTube is a Platform created for displaying weapons stats, skins and videos for a free-to-play first-person hero shooter game developed and published by Riot Games, for Microsoft Windows. It makes uses of the API https://dash.valorant-api.com/ to populate it's datat to the webpage
+
 ## User Stories
 
-* As a user, I want to make a favorite a models(characters,guns,gears...)
-* As a user, I want to view all models
-* As a user, I want to be able to leave a comment on other models
-* As a user, I want to delete a model from my favorite list  and update the list I've made
+* As a user, I want to make a favorite a models(weapoms,gears...)
+* As a user, I want to view all weapons present in the game
+* As a user, I want to be able to leave a like on weapon models
+* As a user, I want to delete a weapon model from my favorite list and update the list I've made
 
 ## API Used
+
 https://dash.valorant-api.com/
 
 ## RESTFUL API
 
-| HTTP METHOD (_Verb_) | URL (_Nouns_)                                   | CRUD  | Response                                       | Notes |
-| -------------------- | ------------------------------------------------| ----  | ---------------------------------------------- | ----- |
-| GET                  |  /gunmodel                                      | GET   | list of gunmodels                              |       |
-| GET                  |  /gunmodel/:id                                  | GET   | get a specific new gunmodel                    |       |
-| GET                  |  /gunmodel/new                                  | GET   | a form to a new gun model                      |       |
-| POST                 |  /gunmodel                                      |CREATE | create a new gun model with the post data      |       |
-| GET                  |  /gunmodel/:id                                  | GET   | an update forn to a gun model                  |       |
-| PUT/PATCH            |  /gunmodel/:id                                  |UPDATE | updated gun model                              |       |
-| DELETE               |  /gunmodel/:id                                  |DESTROY| destroy a gun model                            |       |
+| HTTP METHOD (_Verb_) | URL (_Nouns_)                              | CRUD  | Response                                              | Notes |
+| -------------------- | -------------------------------------------| ----  | ----------------------------------------------------- | ----- |
+| GET                  |  /users/profile                            | GET   | route to profiles page                                |       |
+| GET                  |  /users/armory                             | GET   | list of all weapons.                                  |       |
+| GET                  |  /users/armory/:id                         | GET   | get a specific new weapon stats                       |       |
+| POST                 |  /users/armory/:id                         |CREATE | add a new weapon model to favorite list               |       |
+| GET                  |  /users/favorite                           | GET   | list of all favorite weapons                          |       |
+| DELETE               |  /users/favorite/:id                       |DESTROY| remove a weapon from favorite model                   |       |
+| GET                  |  /users/favorite/skins                     | GET   | get all skins of a specific weapon                    |       |
+| PUT/PATCH            |  /users/favorite/skins/:id                 |UPDATE | updated a favorite weapon's skin                      |       |
+| GET                  |  /users/images                             | GET   | list of all weapons skin images                       |       |
+| GET                  |  /users/videos                             | GET   | list of all weapons skin videos                       |       |
+| GET                  |  /users/videos/:id                         | GET   | list of a specific weapons skin video                 |       |
+| POST                 |  /users/videos/:id                         |CREATE | add reaction to a weapon's skin from all view         |       |
+| POST                 |  /users/videos/:id                         |CREATE | add reaction to a weapon's skin from a specific view  |       |
+
+
 
 
 ## ER Diagram
+
 ![Wireframe](ERDiagram.png)
 
 ## Wireframe
+
 ![Wireframe](HomePage.png)
 
 ## MVP Checklist
-* A home page that user can navigate to other routes
-* A Page for displaying creators ideas
-* A comment section for a model
+
+* A page that displays all weapons
+* Ability to add a weapon to favorite list
+* A like and dislike section for weapons videos
 * Have a favorite gun and characters model
 
 ## Stretch Goal
+
 * Characters Model
-* A like, dislike and subscribe section
 * Have other models (gears, perks)
