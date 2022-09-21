@@ -17,6 +17,9 @@
       .space{
         margin: 40px;
       }
+      textarea{
+        text-align: center;
+      }
       </style>
 </head>
       
@@ -26,11 +29,20 @@
         <a href="/users/armory"><button type="button" class="btn space btn-outline-success btn-lg">Check out Weapons</button></a>
     </div>
     <div>
-        <a href="/users/favorite"><button type="button" class="btn space btn-outline-info btn-lg">Go to Favorite Weapons</button></a>
+      <a href="/users/images"><button type="button" class="btn space btn-outline-warning btn-lg">Check out Videos</button></a>
     </div>
     <div>
-      <a href="/users/video"><button type="button" class="btn space btn-outline-warning btn-lg">Check out Videos</button></a>
-  </div>
+      <a href="/users/video"><button type="button" class="btn space btn-outline-dark btn-lg">Check out Videos</button></a>
+    </div>
+    <div>
+        <a href="/users/favorite"><button type="button" class="btn space btn-outline-info btn-lg">Go to Favorite Weapons</button></a>
+    </div>
+    <form method="post" action="/users/comment">
+      <textarea name="note"  ></textarea>
+      <div>
+        <button type="submit" class="btn space btn-outline-dark btn-lg">Leave a Note</button>
+      </div>
+    </form>
     <div>
         <a href="/users/logout"><button type="button" class="btn  space btn-outline-danger btn-lg">Log Out</button></a>
     </div>

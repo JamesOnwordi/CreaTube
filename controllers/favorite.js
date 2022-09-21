@@ -8,6 +8,7 @@ router.use(methodOveride("_method"))
 router.use(express.urlencoded({extended:false}))
 // controllers
 router.use("/video",require("./video"))
+router.use("/images",require("./images"))
 
 // Route to display all favourite weapons
 router.get("/",async(req,res)=>{
@@ -52,21 +53,35 @@ router.get("/:skin",async (req,res)=>{
             datas.forEach(data =>{
                 data.chromas.forEach(chroma=>{  
                     // console.log("CHROMA",chroma)
-                            if(chroma.displayIcon){  
-                            store.push({
-                                uuid:chroma.uuid,  
-                                displayName:chroma.displayName,             
-                                swatch:chroma.swatch,    
-                                displayIcon:chroma.displayIcon  
-                            })     
-                        }else if(chroma.fullRender){
-                            store.push({
-                                uuid:chroma.uuid,
-                                displayName:chroma.displayName,            
-                                swatch:chroma.swatch,    
-                                displayIcon:chroma.fullRender
-                            })
-                    }     
+
+                    if(chroma.displayName !== "Odin" &&chroma.displayName !== "Classic" && chroma.displayName !== "Sheriff"){
+                        if(chroma.displayName !== "Ghost" &&chroma.displayName !== "Shorty" && chroma.displayName !== "Frenzy"){
+                            if(chroma.displayName !== "Stinger" &&chroma.displayName !== "Spectre" && chroma.displayName !== "Bulldog"){
+                                if(chroma.displayName !== "Phantom" &&chroma.displayName !== "Vandal" && chroma.displayName !== "Ares"){
+                                    if(chroma.displayName !== "Guardian" &&chroma.displayName !== "Judge" && chroma.displayName !== "Bucky"){
+                                        if(chroma.displayName !== "Marshal" &&chroma.displayName !== "Operator" && chroma.displayName !== "Melee" && chroma.displayName !== "Standard" && chroma.displayName !== "Standard Melee"){
+                                            
+                                            if(chroma.displayIcon){  
+                                            store.push({
+                                                uuid:chroma.uuid,  
+                                                displayName:chroma.displayName,             
+                                                swatch:chroma.swatch,    
+                                                displayIcon:chroma.displayIcon  
+                                            })     
+                                        }else if(chroma.fullRender){
+                                            store.push({
+                                                uuid:chroma.uuid,
+                                                displayName:chroma.displayName,            
+                                                swatch:chroma.swatch,    
+                                                displayIcon:chroma.fullRender
+                                            })
+                                        }     
+                                    }
+                                }
+                            }
+                        }
+                    }
+}
                 }) 
             })
             // res.send(store)

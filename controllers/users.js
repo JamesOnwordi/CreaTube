@@ -115,6 +115,14 @@ router.get('/logout', (req, res) => {
     res.redirect('/')
 })
 
+router.post('/comment',async (req,res)=>{
+    const note = await db.note.create({
+        note:req.body.note,
+        userId:res.locals.user.id
+    })
+    res.redirect("/")
+})
+
 router.get('/profile', (req, res) => {
     // if the user is not logged ... we need to redirect to the login form
     if (!res.locals.user) {

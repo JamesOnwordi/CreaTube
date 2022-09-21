@@ -23,6 +23,13 @@ userId
 
 sequelize model:create --name reaction --attributes like:integer,dislike:integer,uuid:text,userId:integer
 
+NOTE MODEL
+----------
+note
+userId
+
+sequelize model:create --name note --attributes note:text,userId:integer
+
 
 sequelize model:create --name gun --attributes uuid:string,name:string,pic:text,stat:json,userId:integer,commentId:integer
 sequelize model:create --name skin --attributes id:integer,name:text,video:string
