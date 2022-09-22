@@ -18,6 +18,32 @@ https://dash.valorant-api.com/
 ## Link to deployed site
 creatube-jamesonwordi.koyeb.app/
 
+## Installation Instructions 
+To run CreaTube on your local machine, first fork and clone this repository. Then follow these steps: 
+1. In your terminal, navigate to the cloned repository. Run the command 
+```
+npm -install 
+```
+to install all of the packages needed to run the app.  
+
+2. touch a .env file in 
+
+3. In the .env file, you need to add 3 variables. First, an ENC_KEY, which can be a random string. For example, you would write: 
+```
+ENC_KEY=dontleaveanyspace
+```
+6. You will need to create the database for this project and migrate the models to it. In your terminal, run the following two commands: 
+``` 
+createdb simplifry 
+sequelize model:create --name user --attributes email:string,password:string
+sequelize model:create --name favourite --attributes name:string,uuid:string,image:text,userId:integer
+sequelize model:create --name reaction --attributes like:integer,dislike:integer,uuid:text,userId:integer
+sequelize model:create --name note --attributes note:text,userId:integer
+sequelize db:migrate 
+```
+
+7. You're all set, run the nodemon command in your cloned repository and navigate to localhost.3000 in your browswer. 
+
 ## RESTFUL API
 
 | HTTP METHOD (_Verb_) | URL (_Nouns_)                              | CRUD  | Response                                              | Notes |
