@@ -2,7 +2,7 @@
 
 ## Project Idea
 
-CreaTube is a Platform created for displaying weapons stats, skins and videos for a free-to-play first-person hero shooter game developed and published by Riot Games, for Microsoft Windows. It makes uses of the API https://dash.valorant-api.com/ to populate it's datat to the webpage
+CreaTube is a Platform created for displaying weapons stats, skins and videos for a free-to-play first-person hero shooter game developed and published by Riot Games, for Microsoft Windows. It makes uses of the API https://dash.valorant-api.com/ to populate it's data to the webpage
 
 ## User Stories
 
@@ -14,6 +14,9 @@ CreaTube is a Platform created for displaying weapons stats, skins and videos fo
 ## API Used
 
 https://dash.valorant-api.com/
+
+## Linkn to deployed site
+creatube-jamesonwordi.koyeb.app/
 
 ## RESTFUL API
 
