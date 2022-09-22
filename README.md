@@ -20,19 +20,22 @@ creatube-jamesonwordi.koyeb.app/
 
 ## Installation Instructions 
 To run CreaTube on your local machine, first fork and clone this repository. Then follow these steps: 
-1. In your terminal, navigate to the cloned repository. Run the command 
+1.  In your terminal, navigate to the cloned repository. Run the command 
+    to install all of the packages needed to run the app.  
+
 ```
 npm -install 
 ```
-to install all of the packages needed to run the app.  
 
 2. touch a .env file in 
 
-3. In the .env file, you need to add 3 variables. First, an ENC_KEY, which can be a random string. For example, you would write: 
+3. In the .env file, you need to add an ENC_KEY variable, which can be a random string. For example, you would write: 
+
 ```
 ENC_KEY=dontleaveanyspace
 ```
-6. You will need to create the database for this project and migrate the models to it. In your terminal, run the following two commands: 
+
+4. You will need to create the database for this project and migrate the models to it. In your terminal, run the following two commands: 
 ``` 
 createdb simplifry 
 sequelize model:create --name user --attributes email:string,password:string
