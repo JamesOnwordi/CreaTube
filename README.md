@@ -16,7 +16,7 @@ CreaTube is a Platform created for displaying weapons stats, skins and videos fo
 https://dash.valorant-api.com/
 
 ## Link to deployed site
-https://creatube-jamesonwordi.koyeb.app/users/new
+https://creatube-jamesonwordi.koyeb.app
 
 ## Installation Instructions 
 To run CreaTube on your local machine, first fork and clone this repository. Then follow these steps: 
